@@ -3,11 +3,11 @@ import React, {useState, useEffect} from 'react';
 import {savePersons, getPerson, updatePersons} from '../api';
 
 const PersonaFormScreen = ({navigation, route}) => {
-  const [dni, setDNI] = useState(0);
+  const [dni, setDNI] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [fecha, setFecha] = useState('');
-  const [edad, setEdad] = useState(0);
+  const [edad, setEdad] = useState('');
   const [ciudad, setCiudad] = useState('');
 
   const [edit, setEdit] = useState(false);

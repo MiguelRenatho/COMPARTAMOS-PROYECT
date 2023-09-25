@@ -58,10 +58,19 @@ export const deletePersons = async dni => {
 };
 
 export const updatePersons = async (dni, newPerson) => {
-  const res = await fetch(`${API}/${dni}`, {
+  return fetch(`${API}/${dni}`, {
     method: 'PUT',
-    headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(newPerson),
-  });
-  return res;
+  })
+    .then(res => {
+      return res;
+    })
+    .catch(error => {
+      console.error('Error al realizar la solicitud PUT:', error);
+      throw error;
+    });
 };
