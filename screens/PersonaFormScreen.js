@@ -16,7 +16,7 @@ const PersonaFormScreen = ({navigation, route}) => {
     try {
       const person = {
         DNI: dni,
-        Nombres: nombre,
+        NOMBRES: nombre,
         APELLIDOS: apellido,
         FECHANAC: fecha,
         EDAD: edad,
@@ -24,8 +24,6 @@ const PersonaFormScreen = ({navigation, route}) => {
       };
 
       if (!edit) {
-        console.log('person');
-        console.log(person);
         savePersons(person);
       } else {
         updatePersons(route.params.dni, person);
@@ -43,10 +41,10 @@ const PersonaFormScreen = ({navigation, route}) => {
         getPerson(route.params.dni)
           .then(person => {
             setDNI(person.DNI);
-            setNombre(person.Nombres);
+            setNombre(person.NOMBRES);
             setApellido(person.APELLIDOS);
             setFecha(person.FECHANAC);
-            setEdad(EDAD);
+            setEdad(person.EDAD);
             setCiudad(person.CIUDAD);
           })
           .catch(error => {

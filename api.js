@@ -29,8 +29,14 @@ export const getPerson = dni => {
 };
 
 export const savePersons = newPerson => {
-  console.log('newPerson');
-  console.log(newPerson);
+  const objetPerson = {
+    DNI: newPerson.DNI,
+    NOMBRES: newPerson.NOMBRES,
+    APELLIDOS: newPerson.APELLIDOS,
+    FECHANAC: newPerson.FECHANAC,
+    EDAD: newPerson.EDAD,
+    CIUDAD: newPerson.CIUDAD,
+  };
 
   return fetch(API, {
     method: 'POST',
@@ -38,16 +44,11 @@ export const savePersons = newPerson => {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(newPerson),
-  })
-    .then(response => {
-      console.log('Respuesta:', response);
-      return response.json();
-    })
-    .catch(error => {
-      console.error('Error al guardar la persona:', error);
-      throw error;
-    });
+    body: JSON.stringify(objetPerson),
+  }).catch(error => {
+    console.error('Error al guardar la persona:', error);
+    throw error;
+  });
 };
 
 export const deletePersons = async dni => {
